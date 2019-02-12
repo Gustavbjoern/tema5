@@ -4,16 +4,48 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>01-personIJson</title>
+    <title>01-personerIJson</title>
 
     <style>
-        body * {
-            box-sizing: border-box;
-        }
-
         body {
             margin: 0;
             padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        #popup {
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            background-color: hsla(0, 15%, 48%, 0.5);
+            overflow: scroll;
+            display: none;
+        }
+
+        #indhold {
+            min-height: 50vh;
+            background-color: white;
+            width: 70vw;
+            margin: 4rem auto;
+        }
+
+        #luk {
+            position: fixed;
+            right: 2rem;
+            padding-right: 2rem;
+        }
+
+        #luk button {
+            font-size: 2rem;
+            padding: 1rem 2rem;
+        }
+
+        #luk button:hover {
+            cursor: pointer;
         }
 
         img {
@@ -63,46 +95,18 @@
             background-color: chartreuse;
         }
 
-        #popup {
-            top: 0;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            background-color: hsla(0, 20%, 30%, 0.5);
-            display: none;
-
-        }
-
-        #indhold {
-            min-height: 50vh;
-            background-color: antiquewhite;
-            width: 70vw;
-            margin: 4rem auto;
-        }
-
-        #luk {
-            position: fixed;
-            right: 2rem;
-
-        }
-
-        #luk button {
-            font-size: 2rem;
-            padding: 1rem 2rem;
-        }
-
     </style>
 </head>
 
 <body>
+
+
     <div id="popup">
         <div id="luk">
-            <button>x</button>
+            <button> X </button>
         </div>
         <div id="indhold"></div>
     </div>
-
-
 
 
     <h1>Alle</h1>
@@ -132,10 +136,10 @@
             person.sort((a, b) => {
                 return a.navn.localeCompare(b.navn);
             });
-            udMedPerson();
+            visPersoner();
         }
 
-        function udMedPerson() {
+        function visPersoner() {
             dest.innerHTML = "";
             person.forEach(person => {
                 if (filter == "alle" || filter == person.hold) {
@@ -145,20 +149,17 @@
                     dest.lastElementChild.addEventListener("click", () => {
                         visSingle(person);
                     });
+
+                    function visSingle(person) {
+                        document.querySelector("#indhold").innerHTML = `<article class="person"> <h2>${person.navn}</h2><img class="billede" src="${person.billede}" alt="${person.navn}"><p>hold: ${person.hold}</p> <p>Alder: ${person.alder}</p> <p>${person.historie} </p></article>`;
+                        document.querySelector("#popup").style.display = "block";
+                    }
                 }
             });
-
-            function visSingle(person) {
-                document.querySelector("#indhold").innerHtml = `
-<article class="person"> <h2>${person.navn}</h2><img class="billede" src="${person.billede}" alt="${person.navn}"><p>hold: ${person.hold}</p> <p>Alder: ${person.alder}</p></article>`;
-                document.querySelector("#popup").style.display = "block";
-            }
         }
         document.querySelectorAll(".filter").forEach(elm => {
             elm.addEventListener("click", filtering);
         });
-
-
 
         function filtering() {
             filter = this.getAttribute("data-hold");
@@ -167,7 +168,7 @@
                 elm.classList.remove("valgt");
             });
             this.classList.add("valgt");
-            udMedPerson();
+            visPersoner();
         }
 
     </script>
