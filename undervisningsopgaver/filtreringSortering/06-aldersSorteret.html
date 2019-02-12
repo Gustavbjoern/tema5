@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+    <style>
+        body {
+            max-width: 100%;
+        }
+
+        .herredyr img {
+            border: 1px solid black;
+            max-width: 50%;
+
+        }
+
+
+        .herredyr {
+            border: 1px solid #000;
+            background-color: burlywood;
+            display: :grid;
+        }
+
+        #liste {
+
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .menu {
+            text-align: center;
+        }
+
+        .overskrift {
+            text-align: center;
+        }
+
+        .valgt {
+            background-color: chartreuse;
+        }
+
+        @media screen and (min-width:600px) {
+            #liste {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            @media screen and (min-width:900px) {
+                #liste {
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+                }
+
+            }
+
+    </style>
+</head>
+
+<body>
+    <h1 class="overskrift">alle</h1>
+    <nav class="menu">
+        <button class="filter valgt" data-hold="alle">alle</button>
+        <button class="filter" data-hold="a">a</button>
+        <button class="filter" data-hold="b">b</button>
+    </nav>
+    <div id="liste">
+    </div>
+
+    <script>
+        let personer = [];
+        let filter = "alle";
+        document.addEventListener("DOMContentLoaded", hentJson)
+
+
+
+        let dest = document.querySelector("#liste");
+        async function hentJson() {
+
+            let minJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1OLlD_GRoz71piHvnW306omRAyHS7vtLOILQt-K0YF_c");
+
+            personer = await minJson.json();
+            personer.sort((a, b) => {
+                return a.alder - b.alder
+            })
+
+            visAllePersoner();
+        }
+
+        function visAllePersoner() {
+            dest.innerHTML = "";
+
+            personer.forEach(person => {
+                if (filter == "alle" || filter == person.hold) {
+                    dest.innerHTML +=
+
+                        `<div class="herredyr">
+    <h2>Navn: ${person.navn}</h2>
+<p>Alder: ${person.alder}</p>
+<p>Hold: ${person.hold}</p>
+    <img src=${person.billede} alt=${person.navn}>
+
+    <a href='https://github.com/${person.github}' target="_blank">
+        klik her for github </a>
+
+</div>`;
+                }
+            })
+        }
+
+
+
+        document.querySelectorAll(".filter").forEach(item => {
+            item.addEventListener("click", filtrering);
+        })
+
+        function filtrering() {
+            filter = this.getAttribute("data-hold");
+            document.querySelector(".overskrift").textContent = this.textContent;
+            document.querySelectorAll(".filter").forEach(elm => {
+                elm.classList.remove("valgt");
+            })
+            this.classList.add(".valgt");
+
+            visAllePersoner();
+        }
+
+
+        console.log(personer);
+
+    </script>
+</body>
+
+</html>

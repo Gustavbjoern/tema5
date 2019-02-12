@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="liste">
+    </div>
+
+    <script>
+        let alleDyr = [{
+                "navn": "Ræv",
+                "type": "straight up killa",
+                "billede": "http://helf-kea.dk/test/fox.png",
+                "levested": "din mors kusse"
+            },
+            {
+                "navn": "Frø",
+                "type": "straight up killa",
+                "billede": "http://helf-kea.dk/test/frog.png",
+                "levested": "din mors kusse"
+            },
+            {
+                "navn": "gris",
+                "type": "straight up killa",
+                "billede": "http://helf-kea.dk/test/gris.png",
+                "levested": "din mors kusse"
+            },
+            {
+                "navn": "sild",
+                "type": "straight up killa",
+                "billede": "http://helf-kea.dk/test/sild.jpg",
+                "levested": "din mors kusse"
+            },
+            {
+                "navn": "krokodil",
+                "type": "straight up killa",
+                "billede": "http://helf-kea.dk/test/kroko.jpg",
+                "levested": "din mors kusse"
+            },
+
+        ]
+
+        document.addEventListener("DOMContentLoaded", start)
+
+        function start() {
+
+            let dest = document.querySelector("#liste");
+            alleDyr.forEach(dyr => {
+                dest.innerHTML += `<div><h3>${dyr.navn}</h3> <p>${dyr.type} ${dyr.levested}</p> <img src=${dyr.billede} alt=${dyr.navn}></div>`;
+            })
+
+
+        }
+        console.log(alleDyr);
+
+    </script>
+</body>
+
+</html>

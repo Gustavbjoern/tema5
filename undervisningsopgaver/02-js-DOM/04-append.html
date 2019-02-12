@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #gron {
+            height: 200px;
+            width: 200px;
+            background-color: green;
+            line-height: 100px;
+            text-align: center;
+            line-height: 300px;
+        }
+
+        #rod {
+            height: 200px;
+            width: 200px;
+            background-color: red;
+            line-height: 300px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="gron"></div>
+    <div id="rod"></div>
+
+    <script>
+        let fro = `http://helf-kea.dk/test/frog.png`;
+        let pig = `http://helf-kea.dk/test/gris.png`;
+        let fox = `http://helf-kea.dk/test/fox.png`;
+
+
+        document.querySelector("#gron").innerHTML = `<img src = "${fro}" alt = "frø">`;
+
+        document.querySelector("#rod").innerHTML = `<img src = "${pig}" alt = "gris"><img src = "${fox}" alt = "fox">`;
+
+    </script>
+</body>
+
+</html>

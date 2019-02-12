@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="dyr">
+        <h1></h1>
+        <h2></h2>
+        <h3></h3>
+        <img src="" alt="">
+    </div>
+
+    <script>
+        const dyr = {
+            "navn": "Ræv",
+            "type": "straight up killa",
+            "billede": "http://helf-kea.dk/test/fox.png",
+            "levested": "din mors kusse"
+        }
+        const destination = document.querySelector("#dyr");
+        destination.querySelector("h1").textContent = dyr.navn;
+        destination.querySelector("h2").textContent = dyr.type;
+        destination.querySelector("h3").textContent = dyr.levested;
+        destination.querySelector("img").src = dyr.billede;
+        console.log(`dyr: ${dyr.navn}, type: ${dyr.type}, billede: ${dyr.billede}, levested: ${dyr.levested}`);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #gron {
+            height: 100px;
+            width: 100px;
+            background-color: green;
+            line-height: 100px;
+            text-align: center;
+        }
+        #rod {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="gron"></div>
+    <div id="rod"></div>
+
+    <script>
+    document.querySelector("#gron").textContent = "Grøn Firkant";
+
+    document.querySelector("#rod").textContent = "Rød cirkel";
+    </script>
+
+</body>
+</html>

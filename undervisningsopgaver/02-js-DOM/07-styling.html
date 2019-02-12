@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #gron {
+            height: 100px;
+            width: 100px;
+            background-color: green;
+            line-height: 100px;
+            text-align: center;
+        }
+
+        #rod {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            line-height: 100px;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="gron"></div>
+    <div id="rod"></div>
+
+    <script>
+        let fro = `http://helf-kea.dk/test/frog.png`;
+        let pig = `http://helf-kea.dk/test/gris.png`;
+
+        document.addEventListener("DOMContentLoaded", start);
+
+        function start() {
+            console.log("start");
+            let gron = document.querySelector("#gron");
+            let rod = document.querySelector("#rod");
+
+            document.querySelector("#gron").innerHTML = `<img src = "${fro}" alt = "frø">`;
+
+            document.querySelector("#rod").innerHTML = `<img src = "${pig}" alt = "gris">`;
+
+            gron.addEventListener("click", flyt);
+            rod.addEventListener("click", stop);
+
+            function flyt() {
+                let gronStart = document.querySelector("#gron").innerHTML;
+                document.querySelector("#gron").innerHTML = document.querySelector("#rod").innerHTML;
+
+                document.querySelector("#rod").innerHTML = gronStart;
+            }
+
+            function stop() {
+
+                gron.removeEventListener("click", flyt);
+            }
+
+
+        }
+
+    </script>
+</body>

@@ -1,0 +1,32 @@
+[{
+        "navn": "Ræv",
+        "type": "straight up killa",
+        "billede": "http://helf-kea.dk/test/fox.png",
+        "levested": "din mors kusse"
+            },
+    {
+        "navn": "Frø",
+        "type": "straight up killa",
+        "billede": "http://helf-kea.dk/test/frog.png",
+        "levested": "din mors kusse"
+            },
+    {
+        "navn": "gris",
+        "type": "straight up killa",
+        "billede": "http://helf-kea.dk/test/gris.png",
+        "levested": "din mors kusse"
+            },
+    {
+        "navn": "sild",
+        "type": "straight up killa",
+        "billede": "http://helf-kea.dk/test/sild.jpg",
+        "levested": "din mors kusse"
+            },
+    {
+        "navn": "krokodil",
+        "type": "straight up killa",
+        "billede": "http://helf-kea.dk/test/kroko.jpg",
+        "levested": "din mors kusse"
+            }
+
+        ]
